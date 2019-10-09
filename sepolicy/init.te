@@ -1,5 +1,10 @@
-allow init { domain -lmkd -crash_dump }:process noatsecure;
-allow init system_data_file:sock_file write;
-allow init system_server:fd use;
-allow init system_server:unix_stream_socket { read write };
-allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
+allow init fingerprint_sysfs:file setattr;
+allow init fingerprint_device:chr_file { open read write ioctl };
+allow init oem_block_device:blk_file write;
+allow init property_socket:sock_file write;
+allow init hwservicemanager:binder { call transfer };
+allow init system_server:binder call;
+allow init hwlog_jank_device:chr_file write;
+allow init huawei_log_file:filesystem { relabelto relabelfrom mount };
+
+allow init diag_device:chr_file { write ioctl };

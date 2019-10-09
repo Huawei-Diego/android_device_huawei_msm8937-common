@@ -1,27 +1,48 @@
-# FPC Fingerprint
-/data/fpc(/.*)?                                          u:object_r:fpc_data_file:s0
-/dev/socket/fpce                                         u:object_r:fpc_socket:s0
-/sys/devices/soc/soc:fpc1020(/.*)?                       u:object_r:sysfs_fps_attr:s0
 
-# Goodix Fingerprint
-/(vendor|system/vendor)/bin/gx_fpd          u:object_r:gx_fpd_exec:s0
-/dev/gf66xx-spi                             u:object_r:gx_fpd_device:s0
-/dev/ttyACM[0-9]*                           u:object_r:gx_fpd_device:s0
-/dev/goodix_fp                              u:object_r:gx_fpd_device:s0
-/data/goodix(/.*)?                          u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint(/.*)?              u:object_r:gx_fpd_data_file:s0
+/dev/block/platform/soc/7824900.sdhci/mmcblk0p17            u:object_r:oem_block_device:s0
+/dev/bluetooth                                              u:object_r:bluetooth_device:s0
+/dev/dsm                                                    u:object_r:dsm_device:s0
+/dev/hwlog_exception                                        u:object_r:hwlog_exception_device:s0
+/dev/hwlog_jank                                             u:object_r:hwlog_jank_device:s0
+/dev/hwlog_bdat                                             u:object_r:hwlog_bdat_device:s0
+/dev/rmi0                                                   u:object_r:rmi0_device:s0
 
-# Lights / IR Blaster
-/sys/devices(/platform)?/soc/[a-z0-9]+\.sdhci/leds(/.*)?                                u:object_r:sysfs_leds:s0
-/sys/devices(/platform)?/soc/[a-z0-9]+\.i2c/i2c-[0-9]+/[0-9]+-[a-z0-9]+/leds(/.*)?      u:object_r:sysfs_leds:s0
-/sys/devices(/platform)?/soc/leds-qpnp-[0-9]+/leds(/.*)?                                u:object_r:sysfs_leds:s0
-/sys/devices(/platform)?/soc/soc:gpio-leds/leds(/.*)?                                   u:object_r:sysfs_leds:s0
+# Audio
+/sys/bus/platform/drivers/hw_audio_info(/.*)?               u:object_r:hw_audio_info_sysfs:s0
 
-# HIDL
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service.custom                 u:object_r:hal_fingerprint_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service.custom                 u:object_r:hal_fingerprint_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.1-service\.custom     u:object_r:hal_power_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.xiaomi                 u:object_r:hal_lineage_livedisplay_qti_exec:s0
+# Camera
+/data/camera(/.*)?                    u:object_r:camera_socket:s0
+/sys/devices/soc/soc:qcom,camera-flash/leds/dual_leds(/.*)? u:object_r:dual_leds_sysfs:s0
 
-# Block devices
-/dev/block/bootdevice/by-name/persist		u:object_r:persist_block_device:s0
+# Fingerprint
+/data/fpc(/.*)?                                             u:object_r:fingerprintd_data_file:s0
+/data/log/fingerprint(/.*)?                                 u:object_r:fingerprintd_log_data_file:s0
+/dev/fingerprint                                            u:object_r:fingerprint_device:s0
+/sys/devices/platform/fingerprint(/.*)?                     u:object_r:fingerprint_sysfs:s0
+/system/bin/teecd                                           u:object_r:tee_exec:s0
+
+# Lights
+/system/bin/libqmi_oem_main                                 u:object_r:libqmi_oem_main_exec:s0
+
+# Misc
+/system/bin/huawei_version                                  u:object_r:oeminfo_exec:s0
+/system/bin/mac_addr_normalization                          u:object_r:macaddr_exec:s0
+
+# Partitions
+/dev/block/bootdevice/by-name/dsp                           u:object_r:dsp_block_device:s0
+
+# Persist
+/persist/audio(/.*)?                                        u:object_r:persist_audio_data_file:s0
+
+# QMUXD
+/system/bin/qmuxd                                           u:object_r:qmuxd_exec:s0
+
+# RIL
+/data/misc/netmgr(/.*)?                                     u:object_r:netmgr_data_file:s0
+/(vendor|system/vendor)/radio(/.*)?                         u:object_r:radio_data_file:s0
+
+# WCNSS
+/data/log/wifi(/.*)?                                        u:object_r:wcnss_data_file:s0
+
+# Fingerprint custom service
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@1\.0-service\.hwcan u:object_r:hal_fingerprint_default_exec:s0

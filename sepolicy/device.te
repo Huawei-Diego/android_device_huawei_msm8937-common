@@ -1,2 +1,10 @@
-type misc_partition, dev_type;
-#type persist_block_device, dev_type;
+type bluetooth_device, dev_type;
+type dsm_device, dev_type;
+type fingerprint_device, dev_type;
+type hwlog_exception_device, dev_type;
+type hwlog_jank_device, dev_type;
+type hwlog_bdat_device, dev_type;
+type rmi0_device, dev_type;
+
+type dsp_block_device, dev_type;
+type oem_block_device, dev_type;
